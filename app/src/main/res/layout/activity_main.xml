@@ -39,7 +39,7 @@
 
             <ImageView
                 style="@style/ImageMusicStyle"
-                android:src="@drawable/playlist" />
+                android:src="@drawable/plyta" />
 
         </LinearLayout>
     </LinearLayout>
@@ -59,7 +59,7 @@
 
         <ImageView
             style="@style/ImageMusicStyle"
-            android:src="@drawable/plyta" />
+            android:src="@drawable/playlist" />
 
     </LinearLayout>
 

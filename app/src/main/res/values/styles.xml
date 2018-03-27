@@ -20,6 +20,7 @@
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:background">@drawable/border</item>
     </style>
 
     <style name="WindowMusicStyle">
@@ -34,5 +35,7 @@
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">100dp</item>
         <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
     </style>
 </resources>
