@@ -1,50 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:background="#BCAAA4"
     tools:context="com.example.android.musicalstructureapp.MainActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/artists"
+            style="@style/WindowMusicStyle">
+
+            <TextView
+                android:text="@string/artists"
+                style="@style/TextMusicStyle"/>
+
+            <ImageView
+                style="@style/ImageMusicStyle"
+                android:src="@drawable/mikrofon" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/albums"
+            style="@style/WindowMusicStyle">
+
+            <TextView
+                android:text="@string/albums"
+                style="@style/TextMusicStyle"/>
+
+            <ImageView
+                style="@style/ImageMusicStyle"
+                android:src="@drawable/playlist" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tracks"
+        style="@style/WindowMusicStyle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+
         <TextView
-            android:id="@+id/numbers"
-            style="@style/CategoryStyle"
-            android:background="@color/category_numbers"
-            android:text="@string/artists" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tracks"
+            style="@style/TextMusicStyle"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            style="@style/ImageMusicStyle"
+            android:src="@drawable/plyta" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/family"
-        style="@style/CategoryStyle"
-        android:background="@color/category_family"
-        android:text="@string/albums" />
+</LinearLayout>
 
-    <TextView
-        android:id="@+id/colors"
-        style="@style/CategoryStyle"
-        android:background="@color/category_colors"
-        android:text="@string/tracks" />
+    <!--<menu xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_height="wrap_content"--><!--android:layout_width="match_parent">--><!--<item--><!--android:id="@+id/new_game"-->
 
-</RelativeLayout>
+    <!--android:title="@string/new_game"--><!--android:showAsAction="ifRoom"/>--><!--<item--><!--android:id="@+id/help"-->
 
-<!--<menu xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_width="match_parent">-->
-    <!--<item-->
-        <!--android:id="@+id/new_game"-->
-
-        <!--android:title="@string/new_game"-->
-        <!--android:showAsAction="ifRoom"/>-->
-    <!--<item-->
-        <!--android:id="@+id/help"-->
-
-        <!--android:title="@string/help" />-->
-<!--</menu>-->
+    <!--android:title="@string/help" />--><!--</menu>-->
