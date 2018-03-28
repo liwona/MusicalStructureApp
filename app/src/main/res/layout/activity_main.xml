@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="#BCAAA4"
+    android:background="#424242"
     tools:context="com.example.android.musicalstructureapp.MainActivity">
 
     <LinearLayout
