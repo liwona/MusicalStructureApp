@@ -44,8 +44,18 @@ public class MusicsElement implements Serializable{
     }
 
 
-    public String getmAlbumName(){
+    public String getmAlbumName() {
         return mAlbumName;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        MusicsElement element = (MusicsElement) obj;
+        if(element.getmAlbumName() == mAlbumName){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

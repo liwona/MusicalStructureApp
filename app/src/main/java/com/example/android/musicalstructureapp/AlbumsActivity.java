@@ -16,7 +16,7 @@ public class AlbumsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
-        ArrayList<MusicsElement> music = Playlist.getPlaylist();
+        ArrayList<MusicsElement> music = getOnlyAlbum();
 //        ArrayList<MusicsElement> music = new ArrayList<MusicsElement>();
 //        music.add(new MusicsElement("Ed Sheeran", "", "+"));
 //        music.add(new MusicsElement("Ed Sheeran", "","X"));
@@ -52,6 +52,20 @@ public class AlbumsActivity extends AppCompatActivity {
         listener();
     }
 
+    public ArrayList<MusicsElement> getOnlyAlbum(){
+        ArrayList<MusicsElement> playlist = Playlist.getPlaylist();
+        ArrayList<MusicsElement> albums = new ArrayList<MusicsElement>();
+        int size = playlist.size();
+        for (int i = 0; i < size; i++){
+            MusicsElement albumName = playlist.get(i);
+            if (!albums.contains(albumName)){
+                albums.add(albumName);
+            }
+        }
+        return albums;
+    }
+
+
     public void listener (){
         //Find the view which shows the number category
         ListView elements = (ListView) findViewById(R.id.list);
@@ -64,7 +78,8 @@ public class AlbumsActivity extends AppCompatActivity {
                 // Create a new intent to open the {@link ArtistsActivity}
                 Intent nowPlayingIntent = new Intent(AlbumsActivity.this, NowPlayingActivity.class);
                 MusicsElement element = (MusicsElement) arg0.getItemAtPosition(position);
-                nowPlayingIntent.putExtra("element", element);
+                nowPlayingIntent.putExtra("element", element.getmAlbumName());
+                nowPlayingIntent.putExtra("activity", "albums");
                 // Start the new activity
                 startActivity(nowPlayingIntent);
             }

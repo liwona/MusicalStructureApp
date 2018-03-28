@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,12 +23,25 @@ public class NowPlayingActivity extends AppCompatActivity {
         element = (String) intent.getSerializableExtra("element");
         String activity = (String) intent.getSerializableExtra("activity");
 
-        ArrayList<MusicsElement> elements = getSongByArtist(element);
+        ArrayList<MusicsElement> elements;
+        MusicsElement musicsElement;
+        if ("artist".equals(activity)){
+            elements = getSongByArtist(element);
+            musicsElement = elements.get(0);
+        } else if ("albums".equals(activity)){
+            elements = getSongByAlbum(element);
+            musicsElement = elements.get(0);
+        } else{
+            musicsElement = (MusicsElement) intent.getSerializableExtra("musicElement");
+            elements = Playlist.getPlaylist();
+        }
 
         SongAdapter adapter = new SongAdapter(this, elements);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
 
+        displayCurrentSong(musicsElement);
+        listener();
     }
 
     public ArrayList<MusicsElement> getSongByArtist(String artist){
@@ -43,4 +56,40 @@ public class NowPlayingActivity extends AppCompatActivity {
         }
         return songsByArtist;
     }
+
+    public ArrayList<MusicsElement> getSongByAlbum(String album){
+        ArrayList<MusicsElement> playlist = Playlist.getPlaylist();
+        ArrayList<MusicsElement> songsByAlbum= new ArrayList<MusicsElement>();
+        int size = playlist.size();
+        for (int i = 0; i < size; i++){
+            MusicsElement song = playlist.get(i);
+            if (song.getmAlbumName().equals(album)){
+                songsByAlbum.add(song);
+            }
+        }
+        return songsByAlbum;
+    }
+
+    public void listener (){
+        //Find the view which shows the number category
+        ListView elements = (ListView) findViewById(R.id.list);
+
+        // Set a click listener on that View
+        elements.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            // The code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+                // Create a new intent to open the {@link ArtistsActivity}
+                MusicsElement element = (MusicsElement) arg0.getItemAtPosition(position);
+                displayCurrentSong(element);
+
+            }
+        });
+    }
+
+    public void displayCurrentSong(MusicsElement musicsElement){
+        TextView currentSong = (TextView) findViewById(R.id.element1);
+        currentSong.setText(musicsElement.getmSongName()+ " - " + musicsElement.getmArtistName());
+    }
 }
+

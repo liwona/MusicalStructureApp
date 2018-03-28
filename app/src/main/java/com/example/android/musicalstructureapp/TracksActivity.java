@@ -65,7 +65,8 @@ public class TracksActivity extends AppCompatActivity {
                 // Create a new intent to open the {@link ArtistsActivity}
                 Intent nowPlayingIntent = new Intent(TracksActivity.this, NowPlayingActivity.class);
                 MusicsElement element = (MusicsElement) arg0.getItemAtPosition(position);
-                nowPlayingIntent.putExtra("element", element);
+                nowPlayingIntent.putExtra("element", element.getmSongName());
+                nowPlayingIntent.putExtra("musicElement", element);
                 // Start the new activity
                 startActivity(nowPlayingIntent);
             }
