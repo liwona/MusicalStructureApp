@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
@@ -14,16 +17,30 @@ public class NowPlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.now_playing);
 
-        MusicsElement element;
+        String element;
 
         Intent intent = getIntent();
-        element = (MusicsElement) intent.getSerializableExtra("element");
-        TextView element1 = (TextView) findViewById(R.id.element1);
-        TextView element2= (TextView) findViewById(R.id.element2);
-        TextView element3= (TextView) findViewById(R.id.element3);
-        element1.setText(element.getmSongName());
-        element2.setText(element.getmArtistName());
-        element3.setText(element.getmAlbumName());
+        element = (String) intent.getSerializableExtra("element");
+        String activity = (String) intent.getSerializableExtra("activity");
 
+        ArrayList<MusicsElement> elements = getSongByArtist(element);
+
+        SongAdapter adapter = new SongAdapter(this, elements);
+        ListView listView = (ListView) findViewById(R.id.list);
+        listView.setAdapter(adapter);
+
+    }
+
+    public ArrayList<MusicsElement> getSongByArtist(String artist){
+        ArrayList<MusicsElement> playlist = Playlist.getPlaylist();
+        ArrayList<MusicsElement> songsByArtist= new ArrayList<MusicsElement>();
+        int size = playlist.size();
+        for (int i = 0; i < size; i++){
+            MusicsElement song = playlist.get(i);
+            if (song.getmArtistName().equals(artist)){
+                songsByArtist.add(song);
+            }
+        }
+        return songsByArtist;
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -17,17 +18,26 @@ public class ArtistsActivity extends AppCompatActivity {
         setContentView(R.layout.word_list);
 
         //Create an list of strings (words)
-        ArrayList<MusicsElement> artists = new ArrayList<MusicsElement>();
-        artists.add(new MusicsElement("Ed Sheeran", "", ""));
-        artists.add(new MusicsElement("Beyoncé", "", ""));
-        artists.add(new MusicsElement("Coldplay", "", ""));
+        ArrayList<String> artists = getOnlyArtist();
 
-
-        ArtistAdapter adapter= new ArtistAdapter(this, artists);
+        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, artists);
         ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(adapter);
 
         listener();
+    }
+
+    public ArrayList<String> getOnlyArtist(){
+        ArrayList<MusicsElement> playlist = Playlist.getPlaylist();
+        ArrayList<String> artists = new ArrayList<String>();
+        int size = playlist.size();
+        for (int i = 0; i < size; i++){
+                String artistName = playlist.get(i).getmArtistName();
+                if (!artists.contains(artistName)){
+                    artists.add(artistName);
+            }
+        }
+        return artists;
     }
 
     public void listener (){
@@ -41,8 +51,9 @@ public class ArtistsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
                 // Create a new intent to open the {@link ArtistsActivity}
                 Intent nowPlayingIntent = new Intent(ArtistsActivity.this, NowPlayingActivity.class);
-                MusicsElement element = (MusicsElement) arg0.getItemAtPosition(position);
+                String element = (String) arg0.getItemAtPosition(position);
                 nowPlayingIntent.putExtra("element", element);
+                nowPlayingIntent.putExtra("activity", "artist");
                 // Start the new activity
                 startActivity(nowPlayingIntent);
             }

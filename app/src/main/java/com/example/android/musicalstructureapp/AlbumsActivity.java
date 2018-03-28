@@ -16,23 +16,24 @@ public class AlbumsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
-        ArrayList<MusicsElement> music = new ArrayList<MusicsElement>();
-        music.add(new MusicsElement("Ed Sheeran", "", "+"));
-        music.add(new MusicsElement("Ed Sheeran", "","X"));
-        music.add(new MusicsElement("Ed Sheeran","", "÷"));
-        music.add(new MusicsElement("Beyoncé","", "Dangerously in Love"));
-        music.add(new MusicsElement("Beyoncé","", "B'Day"));
-        music.add(new MusicsElement("Beyoncé", "","I Am... Sasha Fierce"));
-        music.add(new MusicsElement("Beyoncé", "","4"));
-        music.add(new MusicsElement("Beyoncé", "","Beyoncé"));
-        music.add(new MusicsElement("Beyoncé", "","Lemonade"));
-        music.add(new MusicsElement("Coldplay","", "Parachutes"));
-        music.add(new MusicsElement("Coldplay","", "A Rush of Blood to the Head"));
-        music.add(new MusicsElement("Coldplay","", "X&Y"));
-        music.add(new MusicsElement("Coldplay","", "Viva la Vida or Death and All His Friends"));
-        music.add(new MusicsElement("Coldplay","", "Mylo Xyloto"));
-        music.add(new MusicsElement("Coldplay", "","Ghost Stories"));
-        music.add(new MusicsElement("Coldplay","", "A Head Full of Dreams"));
+        ArrayList<MusicsElement> music = Playlist.getPlaylist();
+//        ArrayList<MusicsElement> music = new ArrayList<MusicsElement>();
+//        music.add(new MusicsElement("Ed Sheeran", "", "+"));
+//        music.add(new MusicsElement("Ed Sheeran", "","X"));
+//        music.add(new MusicsElement("Ed Sheeran","", "÷"));
+//        music.add(new MusicsElement("Beyoncé","", "Dangerously in Love"));
+//        music.add(new MusicsElement("Beyoncé","", "B'Day"));
+//        music.add(new MusicsElement("Beyoncé", "","I Am... Sasha Fierce"));
+//        music.add(new MusicsElement("Beyoncé", "","4"));
+//        music.add(new MusicsElement("Beyoncé", "","Beyoncé"));
+//        music.add(new MusicsElement("Beyoncé", "","Lemonade"));
+//        music.add(new MusicsElement("Coldplay","", "Parachutes"));
+//        music.add(new MusicsElement("Coldplay","", "A Rush of Blood to the Head"));
+//        music.add(new MusicsElement("Coldplay","", "X&Y"));
+//        music.add(new MusicsElement("Coldplay","", "Viva la Vida or Death and All His Friends"));
+//        music.add(new MusicsElement("Coldplay","", "Mylo Xyloto"));
+//        music.add(new MusicsElement("Coldplay", "","Ghost Stories"));
+//        music.add(new MusicsElement("Coldplay","", "A Head Full of Dreams"));
 
         // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
         // adapter knows how to create list items for each item in the list.
