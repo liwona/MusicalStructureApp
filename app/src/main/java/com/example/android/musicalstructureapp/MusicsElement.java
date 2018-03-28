@@ -1,26 +1,32 @@
 package com.example.android.musicalstructureapp;
 
+import java.io.Serializable;
+
 /**
  * {@link MusicsElement} represents an element which .
  * It contains a default translation and a Miwok translation for that word.
  */
-public class MusicsElement {
+public class MusicsElement implements Serializable{
 
     /** Artist name */
     private String mArtistName;
 
     /**  */
-    private String mMusicElement;
+    private String mSongName;
+
+    private String mAlbumName;
 
     /**
      * Create a new Word object.
      *
      * @param artistName
-     * @param musicElement
+     * @param songName
+     * @param albumName
      */
-    public MusicsElement(String artistName, String musicElement) {
+    public MusicsElement(String artistName, String songName, String albumName) {
         mArtistName = artistName;
-        mMusicElement = musicElement;
+        mSongName = songName;
+        mAlbumName = albumName;
     }
 
     /**
@@ -33,9 +39,13 @@ public class MusicsElement {
     /**
      * Get the Miwok translation of the word.
      */
-    public String getmMusicElement(){
-        return mMusicElement;
+    public String getmSongName(){
+        return mSongName;
     }
 
+
+    public String getmAlbumName(){
+        return mAlbumName;
+    }
 
 }
