@@ -31,31 +31,36 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/shuffle"
-            android:paddingRight="10dp"/>
+            android:src="@drawable/shuffle2"
+            android:paddingRight="20dp"
+            android:layout_gravity="center_vertical"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/previous2"
-            android:paddingRight="10dp"/>
+            android:src="@drawable/previous5"
+            android:paddingRight="20dp"
+            android:layout_gravity="center_vertical"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/play"
-            android:paddingRight="10dp"/>
+            android:paddingRight="20dp"
+            android:layout_gravity="center_vertical"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/next2"
-            android:paddingRight="10dp"/>
+            android:src="@drawable/next4"
+            android:paddingRight="20dp"
+            android:layout_gravity="center_vertical"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/repeat"/>
+            android:src="@drawable/repeat2"
+            android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
 
