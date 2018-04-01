@@ -34,6 +34,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/previous"
             android:src="@drawable/previous5"
             android:paddingRight="20dp"
             android:layout_gravity="center_vertical"/>
@@ -48,6 +49,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/next"
             android:src="@drawable/next4"
             android:paddingRight="20dp"
             android:layout_gravity="center_vertical"/>

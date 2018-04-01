@@ -17,6 +17,8 @@ public class NowPlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.now_playing);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // In `OnCreate();`
+
         String element;
 
         Intent intent = getIntent();
@@ -42,6 +44,8 @@ public class NowPlayingActivity extends AppCompatActivity {
 
         displayCurrentSong(musicsElement);
         listener();
+        listener_previous();
+        listener_next();
     }
 
     public ArrayList<MusicsElement> getSongByArtist(String artist){
@@ -90,6 +94,20 @@ public class NowPlayingActivity extends AppCompatActivity {
     public void displayCurrentSong(MusicsElement musicsElement){
         TextView currentSong = (TextView) findViewById(R.id.element1);
         currentSong.setText(musicsElement.getmSongName()+ " - " + musicsElement.getmArtistName());
+    }
+
+    public void listener_previous(){
+
+    }
+    
+    public void listener_next(){
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        finish();
+        return true;
     }
 }
 

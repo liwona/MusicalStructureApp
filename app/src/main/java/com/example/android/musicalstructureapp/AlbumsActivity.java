@@ -16,6 +16,8 @@ public class AlbumsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         ArrayList<MusicsElement> music = getOnlyAlbum();
 //        ArrayList<MusicsElement> music = new ArrayList<MusicsElement>();
 //        music.add(new MusicsElement("Ed Sheeran", "", "+"));
