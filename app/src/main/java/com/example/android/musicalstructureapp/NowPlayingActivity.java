@@ -5,12 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class NowPlayingActivity extends AppCompatActivity {
+
+    int element_position;
+    ArrayList<MusicsElement> elements;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,17 +29,27 @@ public class NowPlayingActivity extends AppCompatActivity {
         element = (String) intent.getSerializableExtra("element");
         String activity = (String) intent.getSerializableExtra("activity");
 
-        ArrayList<MusicsElement> elements;
         MusicsElement musicsElement;
         if ("artist".equals(activity)){
             elements = getSongByArtist(element);
             musicsElement = elements.get(0);
+            element_position = 0;
         } else if ("albums".equals(activity)){
             elements = getSongByAlbum(element);
             musicsElement = elements.get(0);
+            element_position = 0;
         } else{
             musicsElement = (MusicsElement) intent.getSerializableExtra("musicElement");
             elements = Playlist.getPlaylist();
+            element_position = -1;
+            for(int i = 0; i < elements.size(); i++) {
+                if(elements.get(i).getmSongName().equals(musicsElement.getmSongName()) &&
+                        elements.get(i).getmArtistName().equals(musicsElement.getmArtistName())&&
+                        elements.get(i).getmAlbumName().equals(musicsElement.getmAlbumName())) {
+                    element_position = i;
+                    break;
+                }
+            }
         }
 
         SongAdapter adapter = new SongAdapter(this, elements);
@@ -44,8 +58,9 @@ public class NowPlayingActivity extends AppCompatActivity {
 
         displayCurrentSong(musicsElement);
         listener();
-        listener_previous();
-        listener_next();
+        listenerPrevious();
+        listenerNext();
+        listenerShuffle();
     }
 
     public ArrayList<MusicsElement> getSongByArtist(String artist){
@@ -83,10 +98,10 @@ public class NowPlayingActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                // Create a new intent to open the {@link ArtistsActivity}
+                // Create a new intent to open the {@link proper Activity}
                 MusicsElement element = (MusicsElement) arg0.getItemAtPosition(position);
+                element_position = position;
                 displayCurrentSong(element);
-
             }
         });
     }
@@ -96,12 +111,59 @@ public class NowPlayingActivity extends AppCompatActivity {
         currentSong.setText(musicsElement.getmSongName()+ " - " + musicsElement.getmArtistName());
     }
 
-    public void listener_previous(){
+    public void listenerPrevious() {
+        //Find the view which shows the number category
+        ImageView previous = (ImageView) findViewById(R.id.previous);
 
+        // Set a click listener on that View
+        previous.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onClick(View view) {
+                element_position--;
+                if (element_position == -1) {
+                    element_position = elements.size() - 1;
+                }
+                MusicsElement musicsElement = elements.get(element_position);
+                displayCurrentSong(musicsElement);
+            }
+        });
     }
-    
-    public void listener_next(){
 
+
+    public void listenerNext(){
+        //Find the view which shows the number category
+        ImageView previous = (ImageView) findViewById(R.id.next);
+
+        // Set a click listener on that View
+        previous.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onClick(View view) {
+                element_position++;
+                if (element_position == elements.size()) {
+                    element_position = 0;
+                }
+                MusicsElement musicsElement = elements.get(element_position);
+                displayCurrentSong(musicsElement);
+            }
+        });
+    }
+
+    public void listenerShuffle(){
+        //Find the view which shows the number category
+        ImageView previous = (ImageView) findViewById(R.id.shuffle);
+
+        // Set a click listener on that View
+        previous.setOnClickListener(new View.OnClickListener() {
+            // The code in this method will be executed when the numbers View is clicked on.
+            @Override
+            public void onClick(View view) {
+                element_position = (0 + (int)(Math.random() * (((elements.size() - 1) - 0) + 1)));
+                MusicsElement musicsElement = elements.get(element_position);
+                displayCurrentSong(musicsElement);
+            }
+        });
     }
 
     @Override

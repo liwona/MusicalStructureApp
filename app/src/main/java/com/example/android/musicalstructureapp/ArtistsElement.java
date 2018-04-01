@@ -1,8 +1,7 @@
 package com.example.android.musicalstructureapp;
 
 /**
- * {@link ArtistsElement} represents an element which .
- * It contains a default translation and a Miwok translation for that word.
+ * {@link ArtistsElement} represents an element which contains only Artist.
  */
 
 public class ArtistsElement {
@@ -11,17 +10,16 @@ public class ArtistsElement {
     private String mArtistName;
 
     /**
-     * Create a new Word object.
+     * Create a new ArtistElement object.
      *
-     * @param artistName
-     * @param musicElement
+     * @param artistName is artist's name
      */
     public ArtistsElement(String artistName, String musicElement) {
         mArtistName = artistName;
     }
 
     /**
-     * Get the default translation of the word.
+     * Get the Artist of the Song
      */
     public String getmArtistName(){
         return mArtistName;
