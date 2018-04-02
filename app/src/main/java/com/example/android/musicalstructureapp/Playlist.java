@@ -23,7 +23,7 @@ public class Playlist {
         playlist.add(new MusicsElement("Beyoncé","Hip Hop Star", "Dangerously in Love"));
         playlist.add(new MusicsElement("Beyoncé","Kitty Kat", "B'Day"));
         playlist.add(new MusicsElement("Beyoncé","Irreplaceable", "B'Day"));
-        playlist.add(new MusicsElement("Beyoncé", "","I Am... Sasha Fierce"));
+        playlist.add(new MusicsElement("Beyoncé", "I Am..Sasha Fierce","I Am... Sasha Fierce"));
         playlist.add(new MusicsElement("Beyoncé", "Party","4"));
         playlist.add(new MusicsElement("Beyoncé", "Haunted","Beyoncé"));
         playlist.add(new MusicsElement("Beyoncé", "Hold Up","Lemonade"));
