@@ -39,7 +39,7 @@ public class SongAdapter extends ArrayAdapter<MusicsElement> {
                     R.layout.list_item, parent, false);
         }
 
-        // Get the {@link WordAdapter} object located at this position in the list
+        // Get the {@link SongAdapter} object located at this position in the list
         MusicsElement currentMusicElement = getItem(position);
 
         // Find the TextView in the list_item.xml layout with the ID version_name

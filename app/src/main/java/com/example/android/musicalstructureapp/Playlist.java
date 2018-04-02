@@ -4,6 +4,12 @@ import java.util.ArrayList;
 
 public class Playlist {
 
+
+    /**
+     * Static method which create Playlist of MusicElements
+     *
+     * @return playlist which is ArrayList of MusicElement
+     */
     public static ArrayList<MusicsElement> getPlaylist(){
 
         ArrayList<MusicsElement> playlist = new ArrayList<MusicsElement>();
@@ -22,11 +28,6 @@ public class Playlist {
         playlist.add(new MusicsElement("Beyoncé", "Haunted","Beyoncé"));
         playlist.add(new MusicsElement("Beyoncé", "Hold Up","Lemonade"));
         playlist.add(new MusicsElement("Beyoncé", "Forward","Lemonade"));
-//        playlist.add(new MusicsElement("Coldplay","", "Parachutes"));
-//        playlist.add(new MusicsElement("Coldplay","", "A Rush of Blood to the Head"));
-//        playlist.add(new MusicsElement("Coldplay","", "X&Y"));
-//        playlist.add(new MusicsElement("Coldplay","", "Viva la Vida or Death and All His Friends"));
-//        playlist.add(new MusicsElement("Coldplay","", "Mylo Xyloto"));
         playlist.add(new MusicsElement("Coldplay", "Ink","Ghost Stories"));
         playlist.add(new MusicsElement("Coldplay", "Magic","Ghost Stories"));
         playlist.add(new MusicsElement("Coldplay", "True Love","Ghost Stories"));

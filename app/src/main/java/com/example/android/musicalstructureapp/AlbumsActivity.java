@@ -16,60 +16,64 @@ public class AlbumsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_list);
 
+        // Button 'Back' on the Action Bar
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        // Creating list of Albums Only
         ArrayList<MusicsElement> music = getOnlyAlbum();
-//        ArrayList<MusicsElement> music = new ArrayList<MusicsElement>();
-//        music.add(new MusicsElement("Ed Sheeran", "", "+"));
-//        music.add(new MusicsElement("Ed Sheeran", "","X"));
-//        music.add(new MusicsElement("Ed Sheeran","", "÷"));
-//        music.add(new MusicsElement("Beyoncé","", "Dangerously in Love"));
-//        music.add(new MusicsElement("Beyoncé","", "B'Day"));
-//        music.add(new MusicsElement("Beyoncé", "","I Am... Sasha Fierce"));
-//        music.add(new MusicsElement("Beyoncé", "","4"));
-//        music.add(new MusicsElement("Beyoncé", "","Beyoncé"));
-//        music.add(new MusicsElement("Beyoncé", "","Lemonade"));
-//        music.add(new MusicsElement("Coldplay","", "Parachutes"));
-//        music.add(new MusicsElement("Coldplay","", "A Rush of Blood to the Head"));
-//        music.add(new MusicsElement("Coldplay","", "X&Y"));
-//        music.add(new MusicsElement("Coldplay","", "Viva la Vida or Death and All His Friends"));
-//        music.add(new MusicsElement("Coldplay","", "Mylo Xyloto"));
-//        music.add(new MusicsElement("Coldplay", "","Ghost Stories"));
-//        music.add(new MusicsElement("Coldplay","", "A Head Full of Dreams"));
 
-        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
+        // Create an {@link AlbumAdapter}, whose data source is a list of {@link MusicElement}. The
         // adapter knows how to create list items for each item in the list.
-        //tworzymy nasz własny Adapter -> WordAdapter, aby być w stanie wyświelić nasz list_item.xml
         AlbumAdapter adapter = new AlbumAdapter(this, music);
 
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
+        // Find the {@link ListView} object in the view hierarchy of the {@link AlbumActivity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
         // word_list.xml file.
         ListView listView = (ListView) findViewById(R.id.list);
 
-        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
-        // {@link ListView} will display list items for each {@link Word} in the list.
+        // Make the {@link ListView} use the {@link AlbumAdapter} we created above, so that the
+        // {@link ListView} will display list items for each {@link MusicElement} in the list.
         listView.setAdapter(adapter);
 
+        // Listeners for component in AlbumActivity
         listener();
     }
 
+    /**
+     * Method which gets only Album's name
+     *
+     * @return albums Array
+     */
     public ArrayList<MusicsElement> getOnlyAlbum(){
         ArrayList<MusicsElement> playlist = Playlist.getPlaylist();
         ArrayList<MusicsElement> albums = new ArrayList<MusicsElement>();
         int size = playlist.size();
         for (int i = 0; i < size; i++){
-            MusicsElement albumName = playlist.get(i);
-            if (!albums.contains(albumName)){
-                albums.add(albumName);
+            MusicsElement musicsElement = playlist.get(i);
+            if (!checkAlbumExist(musicsElement, albums)) {
+                albums.add(musicsElement);
             }
         }
         return albums;
     }
 
+    /**
+     * Method which checking if Album of the MusicElement is already on the ArrayList Album
+     */
+    private boolean checkAlbumExist(MusicsElement musicsElement, ArrayList<MusicsElement> albums){
+        for(int j = 0; j < albums.size(); j++) {
+            if(albums.get(j).getmAlbumName().equals(musicsElement.getmAlbumName())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    /**
+     * Listener method : to open new Activity when some ListView element clicked
+     */
     public void listener (){
-        //Find the view which shows the number category
+        //Find the view which shows the ListView
         ListView elements = (ListView) findViewById(R.id.list);
 
         // Set a click listener on that View
@@ -77,7 +81,7 @@ public class AlbumsActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-                // Create a new intent to open the {@link ArtistsActivity}
+                // Create a new intent to open the {@link AlbumActivity}
                 Intent nowPlayingIntent = new Intent(AlbumsActivity.this, NowPlayingActivity.class);
                 MusicsElement element = (MusicsElement) arg0.getItemAtPosition(position);
                 nowPlayingIntent.putExtra("element", element.getmAlbumName());

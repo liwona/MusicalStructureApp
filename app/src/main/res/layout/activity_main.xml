@@ -64,9 +64,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
-    <!--<menu xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:layout_height="wrap_content"--><!--android:layout_width="match_parent">--><!--<item--><!--android:id="@+id/new_game"-->
-
-    <!--android:title="@string/new_game"--><!--android:showAsAction="ifRoom"/>--><!--<item--><!--android:id="@+id/help"-->
-
-    <!--android:title="@string/help" />--><!--</menu>-->
