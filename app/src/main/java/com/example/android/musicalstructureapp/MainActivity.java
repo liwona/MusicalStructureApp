@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,48 +17,42 @@ public class MainActivity extends AppCompatActivity {
 
         //Find the view which shows the number category
         LinearLayout artists = (LinearLayout) findViewById(R.id.artists);
+        //Find the view which shows the number category
+        LinearLayout albums = (LinearLayout) findViewById(R.id.albums);
+        //Find the view which shows the number category
+        LinearLayout tracks = (LinearLayout) findViewById(R.id.tracks);
+
 
         // Set a click listener on that View
-        artists.setOnClickListener(new View.OnClickListener(){
-            // The code in this method will be executed when the numbers View is clicked on.
-            @Override
-            public void onClick (View view){
+        artists.setOnClickListener(this);
+        // Set a click listener on that View
+        albums.setOnClickListener(this);
+        // Set a click listener on that View
+        tracks.setOnClickListener(this);
+    }
+
+    // The code in this method will be executed when the View is clicked on.
+    @Override
+    public void onClick(View view){
+        switch(view.getId()) {
+            case R.id.artists:
                 // Create a new intent to open the {@link ArtistsActivity}
                 Intent artistsIntent = new Intent(MainActivity.this, ArtistsActivity.class);
                 // Start the new activity
                 startActivity(artistsIntent);
-            }
-        });
-
-        //Find the view which shows the number category
-        LinearLayout albums = (LinearLayout) findViewById(R.id.albums);
-
-        // Set a click listener on that View
-        albums.setOnClickListener(new View.OnClickListener(){
-            // The code in this method will be executed when the numbers View is clicked on.
-            @Override
-            public void onClick (View view){
+                break;
+            case R.id.albums:
                 // Create a new intent to open the {@link ArtistsActivity}
                 Intent albumsIntent = new Intent(MainActivity.this, AlbumsActivity.class);
                 // Start the new activity
                 startActivity(albumsIntent);
-            }
-        });
-
-        //Find the view which shows the number category
-        LinearLayout tracks = (LinearLayout) findViewById(R.id.tracks);
-
-        // Set a click listener on that View
-        tracks.setOnClickListener(new View.OnClickListener(){
-            // The code in this method will be executed when the numbers View is clicked on.
-            @Override
-            public void onClick (View view){
+                break;
+            case R.id.tracks:
                 // Create a new intent to open the {@link ArtistsActivity}
                 Intent tracksIntent = new Intent(MainActivity.this, TracksActivity.class);
                 // Start the new activity
                 startActivity(tracksIntent);
-            }
-        });
-
+                break;
+        }
     }
 }

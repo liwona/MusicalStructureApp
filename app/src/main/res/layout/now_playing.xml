@@ -27,7 +27,8 @@
         <ImageView
             style="@style/ButtonStyle"
             android:id="@+id/shuffle"
-            android:src="@drawable/shuffle2" />
+            android:src="@drawable/shuffle2"
+            android:contentDescription="shuffleSongs"/>
 
         <ImageView
             style="@style/ButtonStyle"
